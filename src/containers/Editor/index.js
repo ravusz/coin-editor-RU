@@ -33,17 +33,17 @@ export default class Editor extends React.Component {
     })
   }
 
-  changeEditorText = event => {
-    stringReplaceAsync(
-      event.target.value.replace(regexName, (matchedString, symbol) => {
-        return this.checkIfSymbolExist(this.getCoinDetails(symbol, 'name'))
-      }),
-      regexPrice,
-      this.getCoinPriceInDollars
-    ).then(editedText => {
-      this.setState({ editedText: editedText })
-    })
-  }
+  changeEditorText = debounce(text => {
+    stringReplaceAsync(text, regexPrice, this.getCoinPriceInDollars)
+      .then(value => {
+        return value.replace(regexName, (matchedString, symbol) => {
+          return this.checkIfSymbolExist(this.getCoinDetails(symbol, 'name'))
+        })
+      })
+      .then(editedText => {
+        this.setState({ editedText: editedText })
+      })
+  }, 500)
 
   getCoinPriceInDollars = memoize((matchedString, symbol) => {
     return CoinService.getCoinPriceInDollars(
@@ -85,7 +85,9 @@ export default class Editor extends React.Component {
               placeholder="Text"
               width={'90%'}
               height={'590px'}
-              onChange={this.changeEditorText}
+              onChange={event => {
+                this.changeEditorText(event.target.value)
+              }}
             />
           </Col>
           <Col>
