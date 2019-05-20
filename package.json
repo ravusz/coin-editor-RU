@@ -1,0 +1,42 @@
+{
+  "name": "codest",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@smooth-ui/core-sc": "^10.1.0",
+    "axios": "^0.18.0",
+    "grommet": "^2.7.0",
+    "lodash": "^4.17.11",
+    "memoizee": "^0.4.14",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-notifications": "^1.4.3",
+    "react-scripts": "3.0.1",
+    "reakit": "^1.0.0-beta.0",
+    "reakit-theme-default": "^0.2.0",
+    "string-replace-async": "^1.2.1",
+    "styled-components": "^4.2.0",
+    "styled-tools": "^1.7.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
