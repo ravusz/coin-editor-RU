@@ -48,9 +48,13 @@ export default class Editor extends React.Component {
   getCoinPriceInDollars = memoize((matchedString, symbol) => {
     return CoinService.getCoinPriceInDollars(
       this.checkIfSymbolExist(this.getCoinDetails(symbol, 'id'))
-    ).then(coin => {
-      return `${coin.price.toFixed(2)}$`
-    })
+    )
+      .then(coin => {
+        return `${coin.price.toFixed(2)}$`
+      })
+      .catch(error => {
+        return ''
+      })
   })
 
   getCoinDetails = memoize((symbol, detail) => {
